@@ -1,0 +1,35 @@
+/// Dialogs
+
+.dialog {
+  --dialog-width: min(100% - (var(--size-v-400) * 2), 64rem);
+  --dialog-height: min(100% - (var(--size-v-400) * 2), 40rem);
+  --dialog-padding: var(--size-v-300);
+  --dialog-border-radius: var(--size-v-100);
+  --dialog-bg-clr: var(--clr-orange-400);
+  --dialog-bg-image: linear-gradient(
+    to bottom right,
+    var(--clr-orange-400) 30%,
+    var(--clr-pink-500) 70%
+  );
+
+  z-index: 2;
+  width: var(--dialog-width);
+  min-height: var(--dialog-height);
+  padding-top: var(--dialog-padding);
+  padding-right: var(--dialog-padding);
+  padding-bottom: var(--dialog-padding);
+  padding-left: var(--dialog-padding);
+  border-radius: var(--dialog-border-radius);
+  background-color: var(--dialog-bg-clr);
+  background-image: var(--dialog-bg-image);
+  border: none;
+
+  &::backdrop {
+    background-color: var(--gray-900);
+    opacity: 0.7;
+  }
+
+  &__header__heading {
+    max-width: calc(100% - 6.5rem);
+  }
+}

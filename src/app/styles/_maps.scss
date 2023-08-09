@@ -1,0 +1,481 @@
+/// Maps
+
+/// Colors
+/// Colors - Map
+$colors: (
+  "pink": (
+    "50": #f8d8e4,
+    "100": #f0adc7,
+    "200": #e981a9,
+    "300": #e1568b,
+    // selected
+    "400": #da2b6e,
+    // selected
+    "500": #c12f5b,
+    // selected
+    "600": #b01c5f,
+    "700": #841547,
+    "800": #580e2f,
+    "900": #2c0718,
+  ),
+  "peach": (
+    "50": #fbeae9,
+    "100": #f4c1be,
+    "200": #ec9793,
+    // selected
+    "300": #e46e67,
+    // selected
+    "400": #e3514f,
+    "500": #dd2622,
+    "600": #b01e1c,
+    "700": #841715,
+    "800": #580f0e,
+    "900": #2c0807,
+  ),
+  "purple": (
+    "50": #f5e5f4,
+    "100": #e7c1e4,
+    "200": #d89dd4,
+    "300": #bc52b5,
+    // selected
+    "400": #9e3d97,
+    // selected
+    "500": #9c308a,
+    // selected
+    "600": #aa0e8b,
+    // selected
+    "700": #78176b,
+    // selected
+    "800": #690c56,
+    "900": #3b0731,
+  ),
+  "blue": (
+    "50": #f6fbfd,
+    "100": #cbe7f6,
+    "200": #a0d3ee,
+    "300": #75bee6,
+    // selected
+    "400": #4aaade,
+    // selected
+    "500": #1a66b7,
+    "600": #144d8a,
+    "700": #0d345e,
+    "800": #071b31,
+    "900": #040f1b,
+  ),
+  "yellow": (
+    "50": #fdf7ed,
+    "100": #f8e3bf,
+    "200": #f3cf91,
+    // selected
+    "300": #eebb63,
+    "400": #e9a735,
+    "500": #d38e17,
+    "600": #a56f12,
+    "700": #77500d,
+    "800": #493208,
+    "900": #1c1303,
+  ),
+  "orange": (
+    "50": #fbeae9,
+    "100": #f5bebd,
+    "200": #ee9291,
+    // selected
+    "300": #e46e67,
+    // selected
+    "400": #e34f4d,
+    "500": #b01e1c,
+    "600": #841715,
+    "700": #580f0e,
+    "800": #2c0807,
+    "900": #160403,
+  ),
+  "indigo": (
+    "50": #ebe8f7,
+    "100": #c9c2ea,
+    "200": #a79cdd,
+    "300": #8576d0,
+    "400": #6350c3,
+    "500": #4c39a7,
+    // selected
+    "600": #3a2c81,
+    "700": #291f5b,
+    "800": #181235,
+    "900": #07050f,
+  ),
+  "gray": (
+    "50": #f1f1f1,
+    "100": #e6e6e6,
+    "200": #cccccc,
+    "300": #b3b3b3,
+    "400": #999999,
+    "500": #808080,
+    "600": #666666,
+    "700": #4d4d4d,
+    "800": #333333,
+    "900": #202020,
+  ),
+);
+
+/// Colours - Gradient Directions
+$gradient-directions: (
+  "t": "to top",
+  "tr": "to top right",
+  "r": "to right",
+  "br": "to bottom right",
+  "b": "to bottom",
+  "bl": "to bottom left",
+  "l": "to left",
+  "tl": "to top left",
+);
+
+/// Fonts
+/// Fonts - Font Families
+$font-families: (
+  "primary": #{"Inter",
+  Arial,
+  sans-serif},
+);
+
+/// Fonts - Font Sizes
+$font-sizes: (
+  // Step -2: 12.50px → 10.00px
+  "200": clamp(0.63rem, calc(0.84rem + -0.27vw), 0.78rem),
+  // Step -1: 15.00px → 14.14px
+  "300": clamp(0.88rem, calc(0.96rem + -0.09vw), 0.94rem),
+  // Step 0: 18.00px → 20.00px
+  "400": clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem),
+  // Step 1: 21.60px → 28.28px
+  "500": clamp(1.35rem, calc(1.2rem + 0.73vw), 1.77rem),
+  // Step 2: 25.92px → 39.99px
+  "600": clamp(1.62rem, calc(1.31rem + 1.53vw), 2.5rem),
+  // Step 3: 31.10px → 56.54px
+  "700": clamp(1.94rem, calc(1.39rem + 2.77vw), 3.53rem),
+  // Step 4: 37.32px → 79.95px
+  "800": clamp(2.33rem, calc(1.41rem + 4.63vw), 5rem),
+  // Step 5: 44.79px → 113.05px
+  "900": clamp(2.8rem, calc(1.32rem + 7.42vw), 7.07rem)
+);
+
+/// Fonts - Font Weights
+$font-weights: (
+  "100": 100,
+  "thin": 100,
+  "200": 200,
+  "extra-light": 200,
+  "300": 300,
+  "light": 300,
+  "400": 400,
+  "regular": 400,
+  "500": 500,
+  "medium": 500,
+  "600": 600,
+  "semibold": 600,
+  "700": 700,
+  "bold": 700,
+  "800": 800,
+  "extrabold": 800,
+  "900": 900,
+  "black": 900,
+);
+
+/// Fonts - Font Styles
+$font-styles: (
+  "normal": normal,
+  "italic": italic,
+  "oblique": italic,
+);
+
+/// Text
+/// Text - Text Decorations
+$text-decorations: (
+  "none": none,
+  "underline": underline,
+);
+
+/// Text - Text Alignments
+$text-aligns: (
+  "left": left,
+  "center": center,
+  "right": right,
+);
+
+/// Text - Text Transforms
+$text-transforms: (
+  "none": none,
+  "uppercase": uppercase,
+  "lowercase": lowercase,
+  "capitalize": capitalize,
+);
+
+/// Breakpoints
+$breakpoints: (
+  "xs": 0,
+  "sm": 578px,
+  "md": 768px,
+  "lg": 844px,
+  "xl": 992px,
+  "xxl": 1200px,
+  "xxxl": 1400px,
+);
+
+/// Spacers
+/// Spacers - Direction
+$spacer-directions: (
+  "all": "all",
+  "block": "block",
+  "inline": "inline",
+  "x": "x",
+  "y": "y",
+  "top": "t",
+  "right": "r",
+  "bottom": "b",
+  "left": "l",
+);
+
+/// Spacers - Fixed Spacer
+$fixed-spacers: (
+  // Space 0: 0
+  "0": 0,
+  // Space 50: 2px → 2px
+  "50": clamp(0.13rem, calc(0.13rem + 0vw), 0.13rem),
+  // Space 100: 5px → 5px
+  "100": clamp(0.31rem, calc(0.31rem + 0vw), 0.31rem),
+  // Space 200: 9px → 10px
+  "200": clamp(0.56rem, calc(0.54rem + 0.11vw), 0.63rem),
+  // Space 300: 14px → 15px
+  "300": clamp(0.88rem, calc(0.85rem + 0.11vw), 0.94rem),
+  // Space 400: 18px → 20px
+  "400": clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem),
+  // Space 500: 27px → 30px
+  "500": clamp(1.69rem, calc(1.62rem + 0.33vw), 1.88rem),
+  // Space 600: 36px → 40px
+  "600": clamp(2.25rem, calc(2.16rem + 0.43vw), 2.5rem),
+  // Space 700: 54px → 60px
+  "700": clamp(3.38rem, calc(3.24rem + 0.65vw), 3.75rem),
+  // Space 800: 72px → 80px
+  "800": clamp(4.5rem, calc(4.33rem + 0.87vw), 5rem),
+  // Space 900: 108px → 120px
+  "900": clamp(6.75rem, calc(6.49rem + 1.3vw), 7.5rem),
+  // Space auto: auto
+  "auto": auto
+);
+
+/// Spacers - Variable Spacer
+$variable-spacers: (
+  // Space 0: 0
+  "0": 0,
+  // Space 50: 2px → 2px
+  "50": clamp(0.13em, calc(0.13em + 0vw), 0.13em),
+  // Space 100: 5px → 5px
+  "100": clamp(0.31em, calc(0.31em + 0vw), 0.31em),
+  // Space 200: 9px → 10px
+  "200": clamp(0.56em, calc(0.54em + 0.11vw), 0.63em),
+  // Space 300: 14px → 15px
+  "300": clamp(0.88em, calc(0.85em + 0.11vw), 0.94em),
+  // Space 400: 18px → 20px
+  "400": clamp(1.13em, calc(1.08em + 0.22vw), 1.25em),
+  // Space 500: 27px → 30px
+  "500": clamp(1.69em, calc(1.62em + 0.33vw), 1.88em),
+  // Space 600: 36px → 40px
+  "600": clamp(2.25em, calc(2.16em + 0.43vw), 2.5em),
+  // Space 700: 54px → 60px
+  "700": clamp(3.38em, calc(3.24em + 0.65vw), 3.75em),
+  // Space 800: 72px → 80px
+  "800": clamp(4.5em, calc(4.33em + 0.87vw), 5em),
+  // Space 900: 108px → 120px
+  "900": clamp(6.75em, calc(6.49em + 1.3vw), 7.5em),
+  // Space auto: auto
+  "auto": auto
+);
+
+/// Displays
+$displays: (
+  "none": none,
+  "inline": inline,
+  "block": block,
+  "inline-block": inline-block,
+  "flex": flex,
+  "inline-flex": inline-flex,
+  "grid": grid,
+  "inline-grid": inline-grid,
+);
+
+/// Flex/Grid
+/// Flex/Grid - Align Items
+$grid-flex-align-items: (
+  "inital": inital,
+  "inherit": inherit,
+  "normal": normal,
+  "start": start,
+  "center": center,
+  "end": end,
+  "stretch": stretch,
+  "baseline": baseline,
+  "flex-start": flex-start,
+  "flex-end": flex-end,
+);
+
+/// Flex/Grid - Justify Contents
+$flex-justify-contents: (
+  "inital": inital,
+  "inherit": inherit,
+  "center": center,
+  "space-between": space-between,
+  "space-around": space-around,
+  "space-evenly": space-evenly,
+  "flex-start": flex-start,
+  "flex-end": flex-end,
+);
+
+/// Flex/Grid - Justify Items
+$grid-justify-items: (
+  "inital": inital,
+  "inherit": inherit,
+  "legacy": legacy,
+  "normal": normal,
+  "stretch": stretch,
+  "start": start,
+  "left": left,
+  "center": center,
+  "right": right,
+  "end": end,
+  "overflow-alignment": overflow-alignment,
+  "baseline-alignment": baseline-alignment,
+);
+
+/// Flex/Grid - Flex Wraps
+$flex-wraps: (
+  "nowrap": nowrap,
+  "wrap": wrap,
+  "reverse": wrap-reverse,
+);
+
+/// Box Shadows
+/// Box Shadows - Directions
+$box-shadow-directions: (
+  "top": "t",
+  "top-right": "tr",
+  "right": "r",
+  "bottom-right": "br",
+  "bottom": "b",
+  "bottom-left": "bl",
+  "left": "l",
+  "top-left": "tl",
+);
+
+/// Box Shadows - Fixed Weights
+$box-shadow-f-weights: (
+  "50": 0.01rem,
+  "100": 0.03rem,
+  "200": 0.05rem,
+  "300": 0.1rem,
+  "400": 0.15rem,
+  "500": 0.2rem,
+  "600": 0.25rem,
+  "700": 0.5rem,
+  "800": 0.75rem,
+  "900": 1rem,
+);
+
+/// Box Shadows - Variable Weights
+$box-shadow-v-weights: (
+  "50": 0.01em,
+  "100": 0.03em,
+  "200": 0.05em,
+  "300": 0.1em,
+  "400": 0.15em,
+  "500": 0.2em,
+  "600": 0.25em,
+  "700": 0.5em,
+  "800": 0.75em,
+  "900": 1em,
+);
+
+/// Border Radius
+/// Border Radius - Directions
+$border-radius-directions: (
+  "all": "all",
+  "top": "t",
+  "top-right": "tr",
+  "right": "r",
+  "bottom-right": "br",
+  "bottom": "b",
+  "bottom-left": "bl",
+  "left": "l",
+  "top-left": "tl",
+);
+
+/// Border
+/// Border - Directions
+$border-directions: (
+  "all": "all",
+  "x": "x",
+  "y": "y",
+  "top": "t",
+  "right": "r",
+  "bottom": "b",
+  "left": "l",
+);
+
+/// Border - Styles
+$border-styles: (
+  "none": none,
+  "hidden": hidden,
+  "dotted": dotted,
+  "dashed": dashed,
+  "solid": solid,
+  "double": double,
+  "groove": groove,
+  "ridge": ridge,
+  "inset": inset,
+  "outset": outset,
+);
+
+/// Border - Fixed Weights
+$border-f-weights: (
+  "50": 0.01rem,
+  "100": 0.03rem,
+  "200": 0.05rem,
+  "300": 0.1rem,
+  "400": 0.15rem,
+  "500": 0.2rem,
+  "600": 0.25rem,
+  "700": 0.5rem,
+  "800": 0.75rem,
+  "900": 1rem,
+);
+
+/// Border - Variable Weights
+$border-v-weights: (
+  "50": 0.01em,
+  "100": 0.03em,
+  "200": 0.05em,
+  "300": 0.1em,
+  "400": 0.15em,
+  "500": 0.2em,
+  "600": 0.25em,
+  "700": 0.5em,
+  "800": 0.75em,
+  "900": 1em,
+);
+
+/// Positions
+/// Positions - Setting
+$positions: (
+  "static": static,
+  "relative": relative,
+  "fixed": fixed,
+  "absolute": absolute,
+  "sticky": sticky,
+);
+
+/// Positions - Positioning
+$position-positionings: (
+  "top": "top",
+  "right": "right",
+  "bottom": "bottom",
+  "left": "left",
+  "center-x": "center-x",
+  "center-y": "center-y",
+);

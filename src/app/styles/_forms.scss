@@ -1,0 +1,363 @@
+/// Forms
+fieldset {
+  --fieldset-border: none;
+
+  border: var(--fieldset-border);
+
+  &.fieldset {
+    @each $key, $value in $colors {
+      &-#{$key} {
+        legend {
+          --legend-clr: var(--clr-#{$key}-800);
+          --legend-arrow-clr: var(--clr-#{$key}-800);
+        }
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-in-out;
+
+    & > div {
+      overflow: hidden;
+    }
+  }
+
+  &[aria-hidden="true"] {
+    legend::before {
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+    .content {
+      grid-template-rows: 1fr;
+    }
+  }
+}
+
+legend {
+  --legend-fz: var(--fz-400);
+  --legend-fw: var(--fw-bold);
+  --legend-clr: var(--clr-gray-800);
+  --legend-border: none;
+  --legend-margin: var(--size-v-200);
+
+  --legend-arrow-size: var(--fz-200);
+  --legend-arrow-clr: var(--clr-gray-800);
+
+  font-size: var(--legend-fz);
+  font-weight: var(--legend-fw);
+  color: var(--legend-clr);
+  border: var(--legend-border);
+  margin-bottom: var(--legend-margin);
+  position: relative;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: var(--legend-arrow-size);
+    height: var(--legend-arrow-size);
+    border-left: 0.1em solid var(--legend-arrow-clr);
+    border-bottom: 0.1em solid var(--legend-arrow-clr);
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.form-field {
+  --form-field-width: 200ch;
+  --form-field-height: var(--fz-400);
+  --form-field-br: 0;
+  --form-field-clr: var(--clr-gray-800);
+  --form-field-bg-clr: var(--clr-gray-50);
+  --form-field-border-clr: var(--clr-gray-900);
+  --form-field-border: thin solid var(--form-field-border-clr);
+  --form-field-border-t: var(--form-field-border);
+  --form-field-border-r: var(--form-field-border);
+  --form-field-border-l: var(--form-field-border);
+  --form-field-border-b: var(--form-field-border);
+
+  display: block;
+  width: 100%;
+  max-width: var(--form-field-width);
+  min-height: var(--form-field-height);
+  color: var(--form-field-clr);
+  background-color: var(--form-field-bg-clr);
+  border-radius: var(--form-field-br);
+  border-top: var(--form-field-border-t);
+  border-right: var(--form-field-border-r);
+  border-left: var(--form-field-border-l);
+  border-bottom: var(--form-field-border-b);
+}
+
+input.form-field {
+  --form-field-bg-clr: transparent;
+
+  --form-field-border-t: none;
+  --form-field-border-r: none;
+  --form-field-border-l: none;
+}
+
+select.form-field {
+  --form-field-border: none;
+}
+
+textarea.form-field {
+  --form-field-border: thin solid var(--form-field-border-clr);
+}
+
+.form-radio-checkbox-wrapper {
+  --flow-spacer: var(--size-f-0);
+  --form-radio-checkbox-wrapper-gap: var(--size-v-100);
+
+  --form-radio-checkbox-wrapper-size: var(--fz-400);
+
+  --form-radio-checkbox-wrapper-clr: var(--clr-gray-800);
+  --form-radio-checkbox-wrapper-bg-clr: var(--clr-gray-50);
+  --form-radio-checkbox-wrapper-border-clr: var(--clr-gray-800);
+  --form-radio-checkbox-wrapper-border: thin solid
+    var(--form-radio-checkbox-wrapper-border-clr);
+
+  --form-radio-checkbox-wrapper-radio-indicator-size: 0.2em;
+  --form-radio-checkbox-wrapper-check-indicator-width: var(--size-v-300);
+  --form-radio-checkbox-wrapper-check-indicator-height: var(--size-v-200);
+  --form-radio-checkbox-wrapper-indicator-clr: var(--clr-gray-50);
+  --form-radio-checkbox-wrapper-indicator-checked-clr: var(--clr-gray-800);
+
+  display: flex;
+  align-items: center;
+  gap: var(--form-radio-checkbox-wrapper-gap);
+  color: var(--form-radio-checkbox-wrapper-clr);
+
+  @each $key, $value in $colors {
+    &-#{$key} {
+      --form-radio-checkbox-wrapper-clr: var(--clr-#{$key}-800);
+      --form-radio-checkbox-wrapper-bg-clr: var(--clr-#{$key}-50);
+      --form-radio-checkbox-wrapper-border-clr: var(--clr-#{$key}-500);
+      --form-radio-checkbox-wrapper-indicator-clr: var(--clr-#{$key}-50);
+      --form-radio-checkbox-wrapper-indicator-checked-clr: var(
+        --clr-#{$key}-500
+      );
+    }
+  }
+}
+
+.group-radio-checkbox-wrapper {
+  --flow-spacer: var(--size-f-0);
+  --group-radio-checkbox-wrapper-gap: var(--size-v-200);
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--group-radio-checkbox-wrapper-gap);
+}
+
+input.form-field[type="radio"],
+input.form-field[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+input.form-field[type="radio"] ~ .form-radio {
+  --form-radio-size: var(--fz-400);
+
+  --form-radio-bg-clr: var(--clr-gray-50);
+  --form-radio-border-clr: var(--clr-gray-900);
+  --form-radio-border: thin solid var(--form-radio-border-clr);
+
+  --form-radio-indicator-size: 0.2em;
+  --form-radio-indicator-clr: var(--clr-gray-50);
+  --form-radio-indicator-checked-clr: var(--clr-gray-900);
+
+  display: block;
+  width: var(--form-radio-size);
+  height: var(--form-radio-size);
+  background-color: var(--form-radio-bg-clr);
+  border: var(--form-radio-border);
+  border-radius: 50%;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: var(--form-radio-indicator-size);
+    background-color: var(--form-radio-indicator-clr);
+    border-radius: 50%;
+  }
+}
+
+input.form-field[type="radio"]:checked ~ .form-radio::before {
+  background-color: var(--form-radio-indicator-checked-clr);
+}
+
+input.form-field[type="radio"] ~ .form-radio {
+  --form-radio-size: var(--form-radio-checkbox-wrapper-size);
+
+  --form-radio-bg-clr: var(--form-radio-checkbox-wrapper-bg-clr);
+  --form-radio-border: var(--form-radio-checkbox-wrapper-border);
+
+  --form-radio-indicator-size: var(
+    --form-radio-checkbox-wrapper-radio-indicator-size
+  );
+  --form-radio-indicator-clr: var(--form-radio-checkbox-wrapper-indicator-clr);
+  --form-radio-indicator-checked-clr: var(
+    --form-radio-checkbox-wrapper-indicator-checked-clr
+  );
+
+  display: block;
+  width: var(--form-radio-size);
+  height: var(--form-radio-size);
+  background-color: var(--form-radio-bg-clr);
+  border: var(--form-radio-border);
+  border-radius: 50%;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: var(--form-radio-indicator-size);
+    background-color: var(--form-radio-indicator-clr);
+    border-radius: 50%;
+  }
+}
+
+input.form-field[type="radio"]:checked ~ .form-radio::before {
+  background-color: var(--form-radio-indicator-checked-clr);
+}
+
+input.form-field[type="checkbox"] ~ .form-checkbox {
+  --form-checkbox-size: var(--form-radio-checkbox-wrapper-size);
+
+  --form-checkbox-bg-clr: var(--form-radio-checkbox-wrapper-bg-clr);
+  --form-checkbox-border: var(--form-radio-checkbox-wrapper-border);
+
+  --form-checkbox-indicator-width: var(
+    --form-radio-checkbox-wrapper-check-indicator-width
+  );
+  --form-checkbox-indicator-height: var(
+    --form-radio-checkbox-wrapper-check-indicator-height
+  );
+  --form-checkbox-indicator-clr: var(
+    --form-radio-checkbox-wrapper-indicator-clr
+  );
+  --form-checkbox-indicator-checked-clr: var(
+    --form-radio-checkbox-wrapper-indicator-checked-clr
+  );
+
+  display: block;
+  width: var(--form-checkbox-size);
+  height: var(--form-checkbox-size);
+  background-color: var(--form-checkbox-bg-clr);
+  border: var(--form-checkbox-border);
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: var(--form-checkbox-indicator-width);
+    height: var(--form-checkbox-indicator-height);
+    transform: translate(-50%, -50%) rotate(-48deg);
+    transform-origin: center;
+    border-left: 0.1em solid var(--form-checkbox-indicator-clr);
+    border-bottom: 0.1em solid var(--form-checkbox-indicator-clr);
+  }
+}
+
+input.form-field[type="checkbox"]:checked ~ .form-checkbox::before {
+  border-left: 0.1em solid var(--form-checkbox-indicator-checked-clr);
+  border-bottom: 0.1em solid var(--form-checkbox-indicator-checked-clr);
+}
+
+.form-label {
+  --form-label-clr: var(--clr-gray-800);
+  --form-label-bg-clr: var(--clr-gray-200);
+  --form-label-padding: var(--size-v-200);
+  --form-label-width: 20ch;
+  --form-label-ta: left;
+  --form-label-gap: var(--size-v-100);
+
+  color: var(--form-label-clr);
+  background-color: var(--form-label-bg-clr);
+  min-width: var(--form-label-width);
+  display: flex;
+  align-items: center;
+  gap: var(--form-label-gap);
+  text-align: var(--form-label-ta);
+  padding-top: var(--form-label-padding);
+  padding-right: var(--form-label-padding);
+  padding-bottom: var(--form-label-padding);
+  padding-left: var(--form-label-padding);
+}
+
+.form-field-wrapper {
+  --form-field-wrapper-bg-clr: var(--clr-gray-100);
+  --form-field-wrapper-padding: var(--size-v-200);
+
+  background-color: var(--form-field-wrapper-bg-clr);
+  padding-top: var(--form-field-wrapper-padding);
+  padding-right: var(--form-field-wrapper-padding);
+  padding-bottom: var(--form-field-wrapper-padding);
+  padding-left: var(--form-field-wrapper-padding);
+}
+
+.form-group {
+  --form-group-label-clr: var(--clr-gray-800);
+  --form-group-label-bg-clr: var(--clr-gray-200);
+  --form-group-label-width: 20ch;
+
+  --form-group-field-wrapper-bg-clr: var(--clr-gray-100);
+  --form-group-padding: var(--size-v-200);
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr;
+
+  .form-label {
+    --form-label-clr: var(--form-group-label-clr);
+    --form-label-bg-clr: var(--form-group-label-bg-clr);
+    --form-label-padding: var(--form-group-padding);
+    --form-label-width: var(--form-group-label-width);
+  }
+
+  .form-field-wrapper {
+    --form-field-wrapper-bg-clr: var(--form-group-field-wrapper-bg-clr);
+    --form-field-wrapper-padding: var(--form-group-padding);
+  }
+
+  @each $key, $value in $colors {
+    @each $tint-key, $tint-value in $value {
+      &-#{$key} {
+        --form-group-label-clr: var(--clr-gray-800);
+        --form-group-label-bg-clr: var(--clr-#{$key}-300);
+
+        --form-group-field-wrapper-bg-clr: var(--clr-#{$key}-200);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: breakpoint("md")) {
+  .form-group {
+    grid-template-columns: var(--form-group-label-width) auto;
+    grid-template-rows: auto;
+  }
+}
