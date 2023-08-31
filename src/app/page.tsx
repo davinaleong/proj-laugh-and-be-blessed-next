@@ -1,19 +1,16 @@
+import { FooterComponent } from "./components/footer"
+import { HeaderComponent } from "./components/header"
+import { HelpComponent } from "./components/help"
+import { Config } from "./config"
 import styles from "./page.module.css"
 
 export default function Index() {
   return (
     <div className="wrapper wrapper-aligned-center | flow text-gray-50 bg-full position-relative p-v-y-400">
-      <header className="flow | border-v-b-solid-50-gray-50">
-        <h1 className="fz-700">Laugh and be Blessed</h1>
-        <p className="m-v-b-400">
-          Davina Leong's catalogue of jokes, riddles and tongue twisters.
-        </p>
-      </header>
+      <HeaderComponent heading={Config.title} content={Config.description} />
 
       <main className="flow">
-        <section>
-          <p>Click on one of the cards below to view the content.</p>
-        </section>
+        <HelpComponent content={Config.help} />
 
         <section>
           <div className="card-grid">
@@ -100,14 +97,11 @@ export default function Index() {
         </section>
       </main>
 
-      <footer>
-        <p className="ta-center fz-300">
-          <em>
-            Laugh and be Blessed &copy; Davina Leong,
-            <span data-element="copyright-year">2023</span>
-          </em>
-        </p>
-      </footer>
+      <FooterComponent
+        title={Config.title}
+        author={Config.author}
+        year={Config.year}
+      />
     </div>
   )
 }
