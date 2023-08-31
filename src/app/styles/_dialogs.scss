@@ -33,3 +33,52 @@
     max-width: calc(100% - 6.5rem);
   }
 }
+
+.modal {
+  --_spacer: var(--size-v-300);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  padding-top: var(--_spacer);
+  padding-right: var(--_spacer);
+  padding-bottom: var(--_spacer);
+  padding-left: var(--_spacer);
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  z-index: 2;
+  isolation: isolate;
+
+  &__dialog {
+    --_dialog-width: min(100% - (var(--size-v-400) * 2), 64rem);
+    --_dialog-height: min(100% - (var(--size-v-400) * 2), 40rem);
+    --_dialog-padding: var(--size-v-300);
+    --_dialog-border-radius: var(--size-v-100);
+    --_dialog-bg-clr: var(--clr-orange-400);
+    --_dialog-bg-image: linear-gradient(
+      to bottom right,
+      var(--clr-orange-400) 30%,
+      var(--clr-pink-500) 70%
+    );
+
+    width: var(--_dialog-width);
+    min-height: var(--_dialog-height);
+    padding-top: var(--_dialog-padding);
+    padding-right: var(--_dialog-padding);
+    padding-bottom: var(--_dialog-padding);
+    padding-left: var(--_dialog-padding);
+    border-radius: var(--_dialog-border-radius);
+    background-color: var(--_dialog-bg-clr);
+    background-image: var(--_dialog-bg-image);
+    border: none;
+  }
+
+  &__header__heading {
+    max-width: calc(100% - 6.5rem);
+  }
+}
