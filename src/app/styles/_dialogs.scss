@@ -48,11 +48,15 @@
   padding-right: var(--_spacer);
   padding-bottom: var(--_spacer);
   padding-left: var(--_spacer);
-  display: flex;
+  display: none;
   align-items: top;
   justify-content: center;
   z-index: 2;
   isolation: isolate;
+
+  &[data-active="true"] {
+    display: flex;
+  }
 
   &__dialog {
     --_dialog-width: min(100% - (var(--size-v-400) * 2), 64rem);
