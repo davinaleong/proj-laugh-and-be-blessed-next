@@ -24,7 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body id="top" className="text-gray-50 bg-full position-relative">
+      <body
+        id="top"
+        className="text-gray-50 bg-full position-relative p-v-y-400"
+      >
         {children}
       </body>
     </html>
