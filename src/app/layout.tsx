@@ -2,6 +2,10 @@ import "./styles/app.scss"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
+import { Config } from "./config"
+import { FooterComponent } from "./components/footer"
+import { HeaderComponent } from "./components/header"
+
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -28,7 +32,20 @@ export default function RootLayout({
         id="top"
         className="text-gray-50 bg-full position-relative p-v-y-400"
       >
-        {children}
+        <div className="wrapper wrapper-aligned-center | flow">
+          <HeaderComponent
+            heading={Config.title}
+            content={Config.description}
+          />
+
+          {children}
+
+          <FooterComponent
+            title={Config.title}
+            author={Config.author}
+            year={Config.year}
+          />
+        </div>
       </body>
     </html>
   )
