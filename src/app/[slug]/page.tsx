@@ -24,7 +24,7 @@ async function getData(slug: String) {
   return items[0]
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
   const { fields } = await getData(slug)
   console.log(params, slug, fields)
@@ -33,7 +33,7 @@ export default async function Page({ params }) {
     <main className="flow">
       <section className="flow">
         <header className="entry-header">
-          <h2 className="fz-500">{fields.title}</h2>
+          <h2 className="fz-500">{`${fields.title}`}</h2>
           <Link href="/" className="btn btn-slide">
             Back
           </Link>
