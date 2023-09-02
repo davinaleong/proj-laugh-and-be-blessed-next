@@ -1,5 +1,6 @@
 import styles from "./page.module.css"
 import { createClient } from "contentful"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const client = createClient({
   space: `${process.env.CONTENTFUL_SPACE_ID}`,
@@ -35,8 +36,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main className="flow">
-      <section>
+      <section className="flow">
         <h2 className="fz-500">{fields.title}</h2>
+
+        <div className="flow">{documentToReactComponents(fields.content)}</div>
       </section>
     </main>
   )
