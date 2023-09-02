@@ -3,6 +3,8 @@ import { createClient } from "contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Link from "next/link"
 
+import { contentfulLib } from "./../lib/contentful"
+
 const client = createClient({
   space: `${process.env.CONTENTFUL_SPACE_ID}`,
   environment: `${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
@@ -10,30 +12,22 @@ const client = createClient({
 })
 
 export async function generateStaticParams() {
-  const { items } = await client.getEntries({
-    content_type: `${process.env.CONTENT_TYPE_ID}`,
-  })
+  const items = await contentfulLib.getEntries()
 
   return items.map((item) => ({
     slug: item.fields.slug,
   }))
 }
 
-export async function getData({ slug }) {
-  const { items } = await client.getEntries({
-    content_type: `${process.env.CONTENT_TYPE_ID}`,
-    "fields.slug": slug,
-  })
-
-  if (items.length < 0) {
-    throw Error(`Item not found.`)
-  }
-
+async function getData(slug: String) {
+  const items = await contentfulLib.getEntries(slug)
   return items[0]
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { fields } = await getData(params)
+export default async function Page({ params }) {
+  const { slug } = params
+  const { fields } = await getData(slug)
+  console.log(params, slug, fields)
 
   return (
     <main className="flow">

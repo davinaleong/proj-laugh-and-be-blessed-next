@@ -4,19 +4,10 @@ import Link from "next/link"
 
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
+import { contentfulLib } from "./lib/contentful"
 
-export async function getData() {
-  const client = createClient({
-    space: `${process.env.CONTENTFUL_SPACE_ID}`,
-    environment: `${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
-    accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-  })
-
-  const { items } = await client.getEntries({
-    content_type: `${process.env.CONTENT_TYPE_ID}`,
-  })
-
-  return items
+async function getData() {
+  return contentfulLib.getEntries()
 }
 
 export default async function Index() {
