@@ -23,6 +23,7 @@
     var(--clr-purple-600) 70%
   );
   --card-border: none;
+  --card-td: none;
 
   width: var(--card-width);
   min-height: var(--card-height);
@@ -37,6 +38,7 @@
   border: var(--card-border);
   overflow: hidden;
   position: relative;
+  text-decoration: var(--card-td);
   z-index: 1;
 
   &::before {
@@ -103,4 +105,9 @@
       var(--clr-peach-400) 70%
     );
   }
+}
+
+a.card:hover {
+  color: var(--card-clr);
+  text-decoration: var(--card-td);
 }

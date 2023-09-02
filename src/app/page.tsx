@@ -1,11 +1,8 @@
 import styles from "./page.module.css"
 import { createClient } from "contentful"
+import Link from "next/link"
 
 import { Config } from "./config"
-
-import { CardComponent } from "./components/card"
-import { FooterComponent } from "./components/footer"
-import { HeaderComponent } from "./components/header"
 import { HelpComponent } from "./components/help"
 
 export async function getData() {
@@ -15,11 +12,11 @@ export async function getData() {
     accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
   })
 
-  const response = await client.getEntries({
+  const { items } = await client.getEntries({
     content_type: `${process.env.CONTENT_TYPE_ID}`,
   })
 
-  return response.items
+  return items
 }
 
 export default async function Index() {
@@ -32,10 +29,15 @@ export default async function Index() {
       <section>
         <div className="card-grid">
           {jokes.map((joke, index) => (
-            <CardComponent
+            <Link
               key={joke.sys.id}
-              heading={`${index + 1}. ${joke.fields.title}`}
-            />
+              href={`${joke.fields.slug}`}
+              className="card bg-full shadow-v-br-400"
+            >
+              <h3 className="fz-500">
+                {index + 1}. {joke.fields.title}
+              </h3>
+            </Link>
           ))}
         </div>
       </section>
