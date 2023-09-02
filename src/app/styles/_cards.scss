@@ -15,12 +15,14 @@
   --card-height: 9.2rem;
   --card-padding: var(--size-v-300);
   --card-border-radius: var(--size-v-100);
+  --card-clr: var(--clr-gray-50);
   --card-bg-clr: var(--clr-pink-400);
   --card-bg-image: linear-gradient(
     to bottom right,
     var(--clr-pink-400) 30%,
     var(--clr-purple-600) 70%
   );
+  --card-border: none;
 
   width: var(--card-width);
   min-height: var(--card-height);
@@ -29,8 +31,33 @@
   padding-bottom: var(--card-padding);
   padding-left: var(--card-padding);
   border-radius: var(--card-border-radius);
+  color: var(--card-clr);
   background-color: var(--card-bg-clr);
   background-image: var(--card-bg-image);
+  border: var(--card-border);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: "";
+    display: block;
+    background-color: var(--clr-gray-900);
+    opacity: 0.3;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
 
   &:nth-child(2n) {
     --card-bg-clr: var(--clr-purple-700);
@@ -75,36 +102,5 @@
       var(--clr-pink-400) 30%,
       var(--clr-peach-400) 70%
     );
-  }
-}
-
-a.card {
-  --a-clr: var(--clr-gray-50);
-  --a-td: none;
-  --a-hover-clr: var(--clr-gray-50);
-  --a-hover-td: none;
-
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-
-  &::before {
-    content: "";
-    display: block;
-    background-color: var(--clr-gray-900);
-    opacity: 0.3;
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleX(0);
-    transform-origin: top left;
-    transition: all 0.3s ease-in-out;
-  }
-
-  &:hover::before {
-    transform: scaleX(1);
   }
 }

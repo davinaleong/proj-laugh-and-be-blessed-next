@@ -24,7 +24,8 @@ export async function getData() {
 
 export default async function Index() {
   const jokes = await getData()
-  console.log(`jokes`, jokes)
+  // console.log(`jokes`, jokes)
+  // console.log(`single joke`, jokes[0])
 
   return (
     <div className="wrapper wrapper-aligned-center | flow">
@@ -35,7 +36,12 @@ export default async function Index() {
 
         <section>
           <div className="card-grid">
-            <CardComponent heading="Lorem ipsum dolor" />
+            {jokes.map((joke, index) => (
+              <CardComponent
+                key={index}
+                heading={`${index + 1}. ${joke.fields.title}`}
+              />
+            ))}
           </div>
         </section>
       </main>
