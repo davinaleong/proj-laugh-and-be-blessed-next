@@ -151,6 +151,13 @@ img {
   display: block;
 }
 
+.entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--size-v-400);
+}
+
 @media screen and (min-width: #{breakpoint('lg')}) {
   .layout-grid {
     display: grid;

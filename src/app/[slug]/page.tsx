@@ -1,6 +1,7 @@
 import styles from "./page.module.css"
 import { createClient } from "contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Link from "next/link"
 
 const client = createClient({
   space: `${process.env.CONTENTFUL_SPACE_ID}`,
@@ -37,7 +38,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <main className="flow">
       <section className="flow">
-        <h2 className="fz-500">{fields.title}</h2>
+        <header className="entry-header">
+          <h2 className="fz-500">{fields.title}</h2>
+          <Link href="/" className="btn btn-slide">
+            Back
+          </Link>
+        </header>
 
         <div className="flow">{documentToReactComponents(fields.content)}</div>
       </section>
