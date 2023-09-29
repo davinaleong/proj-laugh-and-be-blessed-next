@@ -31,7 +31,7 @@ export async function getEntries(slug: String = ``) {
   return items
 }
 
-export const contentfulLib = {
+export const LibContentfulSdk = {
   client,
   getEntries,
 }
