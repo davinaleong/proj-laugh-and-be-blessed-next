@@ -48,6 +48,12 @@ export interface LibContentfulTagsSysInterface {
 }
 
 export interface LibContentfulGraphQlInterface {
+  getJokesData(
+    typeId: string,
+    tagId: string,
+    limit: number,
+    revalidate: number | false | undefined
+  ): Promise<any>
   getContentfulData(requestInit: RequestInit): Promise<any>
   query(
     body: LibContentfulSysInteface,

@@ -14,10 +14,22 @@ import {
   LibContentfulTagsSysInterface,
   LibContentfulGraphQlInterface,
 } from "./interfaces"
+import logValue from "../log/log-value"
+
+export async function getJokesData(
+  typeId: string = CONTENTFUL_TYPE_ID,
+  tagId: string = CONTENTFUL_TAG_ID,
+  limit: number = CONTENTFUL_LIMIT,
+  revalidate: number | false | undefined = REVALIDATE
+): Promise<any> {
+  return getContentfulData(query(sysQuery(typeId, tagId, limit), revalidate))
+}
 
 export async function getContentfulData(
   requestInit: RequestInit
 ): Promise<any> {
+  logValue(`requestInit`, requestInit)
+
   const response = await fetch(CONTENTFUL_DELIVERY_API_URL, requestInit)
   const data = await response.json()
   return data
@@ -27,13 +39,15 @@ export function query(
   body: LibContentfulSysInteface,
   revalidate: number | false | undefined = REVALIDATE
 ): RequestInit {
+  logValue(`body`, body)
+
   return {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
     },
-    body: JSON.stringify({ body }),
+    body: JSON.stringify(body),
     next: { revalidate },
   }
 }
@@ -80,6 +94,7 @@ export function tagsSysQuery(tagId: string): LibContentfulTagsSysInterface {
 }
 
 const LibContentfulGraphQl: LibContentfulGraphQlInterface = {
+  getJokesData,
   getContentfulData,
   query,
   sysQuery,
