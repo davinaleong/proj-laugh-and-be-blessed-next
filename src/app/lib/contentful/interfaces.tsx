@@ -48,6 +48,11 @@ export interface LibContentfulTagsSysInterface {
 }
 
 export interface LibContentfulGraphQlInterface {
+  getContentfulData(requestInit: RequestInit): Promise<any>
+  query(
+    body: LibContentfulSysInteface,
+    revalidate: number | false | undefined
+  ): RequestInit
   sysQuery(
     typeId: string,
     tagId: string,
@@ -57,12 +62,10 @@ export interface LibContentfulGraphQlInterface {
   metadataQuery(tagId: string): LibContentfulMetadataInterface
   tagsQuery(tagId: string): LibContentfulTagsInterface
   tagsSysQuery(tagId: string): LibContentfulTagsSysInterface
-  requestBuilder(
-    query: LibContentfulSysInteface,
-    revalidate: number | false | undefined
-  ): RequestInit
-  fetchGraphQl(
-    query: LibContentfulSysInteface,
-    revalidate: number | false | undefined
-  ): Promise<any>
+}
+
+export interface LibContentfulInterface {
+  LibContentfulEnvVars: LibContentfulEnvVarsInterface
+  LibContentfulSdk: LibContentfulSdkInterface
+  LibContentfulGraphQl: LibContentfulGraphQlInterface
 }

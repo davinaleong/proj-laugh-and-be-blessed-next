@@ -3,14 +3,16 @@ import Link from "next/link"
 
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
-import { getEntries } from "./lib/contentful/sdk"
+// import { getEntries } from "./lib/contentful/sdk"
+import { getContentfulData } from "./lib/contentful/sdk"
 
 async function getData() {
-  return getEntries()
+  return getContentfulData()
 }
 
 export default async function Index() {
   const jokes = await getData()
+  console.log(`jokes`, jokes)
 
   return (
     <main className="flow">

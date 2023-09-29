@@ -15,6 +15,29 @@ import {
   LibContentfulGraphQlInterface,
 } from "./interfaces"
 
+export async function getContentfulData(
+  requestInit: RequestInit
+): Promise<any> {
+  const response = await fetch(CONTENTFUL_DELIVERY_API_URL, requestInit)
+  const data = await response.json()
+  return data
+}
+
+export function query(
+  body: LibContentfulSysInteface,
+  revalidate: number | false | undefined = REVALIDATE
+): RequestInit {
+  return {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
+    },
+    body: JSON.stringify({ body }),
+    next: { revalidate },
+  }
+}
+
 export function sysQuery(
   typeId: string = CONTENTFUL_TYPE_ID,
   tagId: string = CONTENTFUL_TAG_ID,
@@ -56,41 +79,14 @@ export function tagsSysQuery(tagId: string): LibContentfulTagsSysInterface {
   }
 }
 
-export function requestBuilder(
-  query: LibContentfulSysInteface,
-  revalidate: number | false | undefined = REVALIDATE
-): RequestInit {
-  return {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${CONTENTFUL_ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({ query }),
-    next: { revalidate },
-  }
-}
-
-export async function fetchGraphQl(
-  query: LibContentfulSysInteface,
-  revalidate: number | false | undefined = REVALIDATE
-): Promise<any> {
-  const response = await fetch(
-    CONTENTFUL_DELIVERY_API_URL,
-    requestBuilder(query, revalidate)
-  )
-  const data = await response.json()
-  return data
-}
-
 const LibContentfulGraphQl: LibContentfulGraphQlInterface = {
+  getContentfulData,
+  query,
   sysQuery,
   typeQuery,
   metadataQuery,
   tagsQuery,
   tagsSysQuery,
-  requestBuilder,
-  fetchGraphQl,
 }
 
 export default LibContentfulGraphQl
