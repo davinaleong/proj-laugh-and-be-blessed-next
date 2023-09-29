@@ -4,7 +4,7 @@ import Link from "next/link"
 
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
-import { contentfulLib } from "./lib/contentful"
+import { contentfulLib } from "./lib/contentful.sdk"
 
 async function getData() {
   return contentfulLib.getEntries()

@@ -1,19 +1,25 @@
 import { createClient } from "contentful"
+import {
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_ENVIRONMENT_ID,
+  CONTENTFUL_ACCESS_TOKEN,
+  CONTENT_TYPE_ID,
+} from "./variables"
 
 export const client = createClient({
-  space: `${process.env.CONTENTFUL_SPACE_ID}`,
-  environment: `${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
-  accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+  space: CONTENTFUL_SPACE_ID,
+  environment: CONTENTFUL_ENVIRONMENT_ID,
+  accessToken: CONTENTFUL_ACCESS_TOKEN,
 })
 
 export async function getEntries(slug: String = ``) {
   let object = {
-    content_type: `${process.env.CONTENT_TYPE_ID}`,
+    content_type: CONTENT_TYPE_ID,
   }
   if (slug !== "") {
     object = {
-      content_type: `${process.env.CONTENT_TYPE_ID}`,
-      "fields.slug": `${slug}`,
+      content_type: CONTENT_TYPE_ID,
+      "fields.slug": slug,
     }
   }
 

@@ -3,7 +3,7 @@ import { createClient } from "contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Link from "next/link"
 
-import { contentfulLib } from "./../lib/contentful"
+import { contentfulLib } from "../lib/contentful.sdk"
 
 const client = createClient({
   space: `${process.env.CONTENTFUL_SPACE_ID}`,
