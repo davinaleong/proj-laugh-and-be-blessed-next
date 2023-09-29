@@ -5,8 +5,6 @@ import Link from "next/link"
 
 import { contentfulLib } from "./../lib/contentful"
 
-export const revalidate = 10
-
 const client = createClient({
   space: `${process.env.CONTENTFUL_SPACE_ID}`,
   environment: `${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
