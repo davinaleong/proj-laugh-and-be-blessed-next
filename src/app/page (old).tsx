@@ -1,4 +1,5 @@
 import styles from "./page.module.css"
+import { createClient } from "contentful"
 import Link from "next/link"
 
 import { Config } from "./config"
