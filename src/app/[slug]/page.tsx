@@ -3,24 +3,18 @@ import { createClient } from "contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Link from "next/link"
 
-import { LibContentfulSdk } from "../lib/contentful/sdk"
-
-const client = createClient({
-  space: `${process.env.CONTENTFUL_SPACE_ID}`,
-  environment: `${process.env.CONTENTFUL_ENVIRONMENT_ID}`,
-  accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-})
+import { client, getEntries } from "./../lib/contentful/sdk"
 
 export async function generateStaticParams() {
-  const items = await LibContentfulSdk.getEntries()
+  const items = await getEntries()
 
   return items.map((item) => ({
     slug: item.fields.slug,
   }))
 }
 
-async function getData(slug: String) {
-  const items = await LibContentfulSdk.getEntries(slug)
+async function getData(slug: string) {
+  const items = await getEntries(slug)
   return items[0]
 }
 

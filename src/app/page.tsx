@@ -4,10 +4,10 @@ import Link from "next/link"
 
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
-import { LibContentfulSdk } from "./lib/contentful/sdk"
+import { getEntries } from "./lib/contentful/sdk"
 
 async function getData() {
-  return LibContentfulSdk.getEntries()
+  return getEntries()
 }
 
 export default async function Index() {
