@@ -20,6 +20,7 @@ export async function getEntries(slug: string = ``) {
   let object = {
     content_type: CONTENTFUL_TYPE_ID,
     "metadata.tags.sys.id[all]": CONTENTFUL_TAG_ID,
+    next: { revalidate: REVALIDATE },
   }
   if (slug !== "") {
     object = {
