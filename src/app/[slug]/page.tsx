@@ -1,9 +1,7 @@
-import styles from "./page.module.css"
-import { createClient } from "contentful"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Link from "next/link"
 
-import { client, getEntries } from "./../lib/contentful/sdk"
+import { getEntries } from "./../lib/contentful/sdk"
 
 export async function generateStaticParams() {
   const items = await getEntries()
