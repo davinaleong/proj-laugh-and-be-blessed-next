@@ -4,8 +4,6 @@ import { Config } from "./config"
 import { HelpComponent } from "./components/help"
 import { getEntries } from "./lib/contentful/sdk"
 
-export const revalidate = 1000
-
 async function getData() {
   return getEntries()
 }
