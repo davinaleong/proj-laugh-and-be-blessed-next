@@ -1,24 +1,23 @@
-import styles from "./page.module.css"
 import Link from "next/link"
 
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
-import logValue from "./lib/log/log-value"
-import { getJokesData } from "./lib/contentful/graphql"
+import { getEntries } from "./lib/contentful/sdk"
+
+export const revalidate = 1000
 
 async function getData() {
-  return getJokesData()
+  return getEntries()
 }
 
 export default async function Index() {
   const jokes = await getData()
-  logValue(`jokes`, jokes)
 
   return (
     <main className="flow">
       <HelpComponent content={Config.help} />
 
-      {/* <section>
+      <section>
         <div className="card-grid">
           {jokes.map((joke, index) => (
             <Link
@@ -32,7 +31,7 @@ export default async function Index() {
             </Link>
           ))}
         </div>
-      </section> */}
+      </section>
     </main>
   )
 }

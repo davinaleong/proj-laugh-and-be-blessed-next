@@ -1,14 +1,10 @@
-import {
-  ContentfulClientApi,
-  EntrySkeletonType,
-  createClient,
-} from "contentful"
+import { ContentfulClientApi, createClient } from "contentful"
 import { LibContentfulSdkInterface } from "./interfaces"
 import {
   CONTENTFUL_SPACE_ID,
   CONTENTFUL_ENVIRONMENT_ID,
   CONTENTFUL_ACCESS_TOKEN,
-  CONTENT_TYPE_ID,
+  CONTENTFUL_TYPE_ID,
 } from "./variables"
 
 export const client: ContentfulClientApi<undefined> = createClient({
@@ -19,11 +15,11 @@ export const client: ContentfulClientApi<undefined> = createClient({
 
 export async function getEntries(slug: string = ``) {
   let object = {
-    content_type: CONTENT_TYPE_ID,
+    content_type: CONTENTFUL_TYPE_ID,
   }
   if (slug !== "") {
     object = {
-      content_type: CONTENT_TYPE_ID,
+      content_type: CONTENTFUL_TYPE_ID,
       "fields.slug": slug,
     }
   }
