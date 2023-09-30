@@ -7,6 +7,7 @@ import {
   CONTENTFUL_TYPE_ID,
   CONTENTFUL_TAG_ID,
 } from "./variables"
+import logValue from "../log/log-value"
 
 export const client: ContentfulClientApi<undefined> = createClient({
   space: CONTENTFUL_SPACE_ID,
@@ -26,12 +27,13 @@ export async function getEntries(slug: string = ``) {
     }
   }
 
-  const { items } = await client.getEntries(object)
-  if (items.length < 0) {
-    throw Error(`No items found.`)
+  try {
+    const { items } = await client.getEntries(object)
+    return items
+  } catch (error) {
+    logValue(`Error`, error)
+    return []
   }
-
-  return items
 }
 
 const LibContentfulSdk: LibContentfulSdkInterface = {
