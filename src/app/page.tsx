@@ -3,8 +3,9 @@ import Link from "next/link"
 import { Config } from "./config"
 import { HelpComponent } from "./components/help"
 import { getEntries } from "./lib/contentful/sdk"
+import { REVALIDATE } from "./lib/contentful/variables"
 
-export const revalidate = 1000
+export const revalidate = REVALIDATE
 
 async function getData() {
   return getEntries()
