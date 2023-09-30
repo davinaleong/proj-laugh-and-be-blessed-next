@@ -5,6 +5,7 @@ import {
   CONTENTFUL_ENVIRONMENT_ID,
   CONTENTFUL_ACCESS_TOKEN,
   CONTENTFUL_TYPE_ID,
+  CONTENTFUL_TAG_ID,
 } from "./variables"
 
 export const client: ContentfulClientApi<undefined> = createClient({
@@ -16,6 +17,7 @@ export const client: ContentfulClientApi<undefined> = createClient({
 export async function getEntries(slug: string = ``) {
   let object = {
     content_type: CONTENTFUL_TYPE_ID,
+    "metadata.tags.sys.id[all]": CONTENTFUL_TAG_ID,
   }
   if (slug !== "") {
     object = {
