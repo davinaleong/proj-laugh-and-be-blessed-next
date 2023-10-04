@@ -6,7 +6,7 @@ export const CONTENTFUL_ENVIRONMENT_ID: string = `${process.env.CONTENTFUL_ENVIR
 export const CONTENTFUL_ACCESS_TOKEN: string = `${process.env.CONTENTFUL_ACCESS_TOKEN}`
 export const CONTENTFUL_TYPE_ID: string = `${process.env.CONTENTFUL_TYPE_ID}`
 export const CONTENTFUL_TAG_ID: string = `${process.env.CONTENTFUL_TAG_ID}`
-export const CONTENTFUL_LIMIT: number = 100
+export const CONTENTFUL_LIMIT: string = `${process.env.CONTENTFUL_LIMIT}`
 export const REVALIDATE: number = 1000 //3600 // in seconds
 
 export const CONTENTFUL_DELIVERY_API_URL: string = `${CONTENTFUL_CDN}/spaces/${CONTENTFUL_SPACE_ID}/environments/${CONTENTFUL_ENVIRONMENT_ID}/entries`

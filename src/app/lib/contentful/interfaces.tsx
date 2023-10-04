@@ -8,7 +8,7 @@ export interface LibContentfulEnvVarsInterface {
   CONTENTFUL_TYPE_ID: string
   CONTENTFUL_TAG_ID: string
   CONTENTFUL_DELIVERY_API_URL: string
-  CONTENTFUL_LIMIT: number
+  CONTENTFUL_LIMIT: string
   REVALIDATE: number
 }
 

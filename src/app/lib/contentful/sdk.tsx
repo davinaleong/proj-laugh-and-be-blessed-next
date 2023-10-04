@@ -6,7 +6,7 @@ import {
   CONTENTFUL_ACCESS_TOKEN,
   CONTENTFUL_TYPE_ID,
   CONTENTFUL_TAG_ID,
-  REVALIDATE,
+  CONTENTFUL_LIMIT,
 } from "./variables"
 import logValue from "../log/log-value"
 
@@ -20,6 +20,7 @@ export async function getEntries(slug: string = ``) {
   let object = {
     content_type: CONTENTFUL_TYPE_ID,
     "metadata.tags.sys.id[all]": CONTENTFUL_TAG_ID,
+    limit: Number(CONTENTFUL_LIMIT),
   }
   if (slug !== "") {
     object = {
@@ -27,6 +28,7 @@ export async function getEntries(slug: string = ``) {
       "fields.slug": slug,
     }
   }
+  console.log(`object`, object)
 
   try {
     const { items } = await client.getEntries(object)
