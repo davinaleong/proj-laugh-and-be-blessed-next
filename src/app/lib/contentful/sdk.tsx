@@ -19,7 +19,7 @@ export const client: ContentfulClientApi<undefined> = createClient({
 export async function getEntries(slug: string = ``) {
   let object = {
     content_type: CONTENTFUL_TYPE_ID,
-    "metadata.tags.sys.id[all]": CONTENTFUL_TAG_ID,
+    // "metadata.tags.sys.id[all]": CONTENTFUL_TAG_ID,
     limit: Number(CONTENTFUL_LIMIT),
   }
   if (slug !== "") {
@@ -31,7 +31,9 @@ export async function getEntries(slug: string = ``) {
   console.log(`object`, object)
 
   try {
-    const { items } = await client.getEntries(object)
+    const { total, items } = await client.getEntries(object)
+    console.log(`total`, total)
+
     return items
   } catch (error) {
     logValue(`Error`, error)
